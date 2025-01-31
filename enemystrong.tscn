@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjqfyc6s25ahq"]
+
+[ext_resource type="Script" path="res://enemystrong.gd" id="1_h66b5"]
+[ext_resource type="Texture2D" uid="uid://cch6a3oiv2xjm" path="res://Tanks Theme/PNG/Default size/tank_bigRed.png" id="2_jrcqe"]
+[ext_resource type="PackedScene" uid="uid://osmo3igrp86l" path="res://e_shell.tscn" id="3_d8dvh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dp1kx"]
+radius = 25.02
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ufh66"]
+radius = 2366.22
+
+[node name="EnemyStrong" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_h66b5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("2_jrcqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dp1kx")
+
+[node name="DetectRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius"]
+shape = SubResource("CircleShape2D_ufh66")
+
+[node name="E_Shell" parent="." instance=ExtResource("3_d8dvh")]
+position = Vector2(1, 9)
+
+[node name="E_Shell2" parent="." instance=ExtResource("3_d8dvh")]
+position = Vector2(0, -8)
+
+[connection signal="body_entered" from="DetectRadius" to="." method="_on_detect_radius_body_entered"]
+[connection signal="body_exited" from="DetectRadius" to="." method="_on_detect_radius_body_exited"]

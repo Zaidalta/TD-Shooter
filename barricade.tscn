@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmboui3yecqk2"]
+
+[ext_resource type="Texture2D" uid="uid://c27yd52uq2kle" path="res://Tanks Theme/PNG/Default size/barricadeWood.png" id="1_63ijj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_meivf"]
+
+[node name="Barricade" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_63ijj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_meivf")
